@@ -1,0 +1,24 @@
+---
+- name: Deploy Web Application
+  hosts: 13.234.124.175
+  tasks:
+    - name: Install Docker if not installed
+      become: true
+      yum:
+        name: docker.io
+        state: present
+    - name: Create a Docker image
+      docker_image:
+        name: mytask:2.0
+        source: build
+        build:
+          path: .
+    - name: Run the web app container
+      docker_container:
+        name: container-webapp
+        image: mytask:2.0
+        state: started
+        exposed_ports:
+          - "3300"
+        published_ports:
+          - "3300:3300"

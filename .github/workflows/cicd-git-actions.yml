@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ami-0614680123427b75e
+    runs-on: self-hosted
 
     steps:
     - name: Checkout code
@@ -34,7 +34,7 @@ jobs:
          docker build -t mytask:3.0 -f Dockerfile
 
   deploy:
-    runs-on: ami-0614680123427b75e
+    runs-on: self-hosted
     needs: build
     steps:
     - name: Checkout code

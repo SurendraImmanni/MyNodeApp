@@ -25,12 +25,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd MyNodeApp/MyNodeApp/webapp  
+        cd webapp  
         npm install
 
     - name: Run Unit Tests
       run: | 
-        cd MyNodeApp/MyNodeApp/webapp
+        cd webapp
         npm test
         echo "Tests run successfully"
 
@@ -39,7 +39,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        cd MyNodeApp/MyNodeApp/webapp
+        cd webapp
         docker build -t mytask:3.0 -f Dockerfile .
 
   deploy:

@@ -4,7 +4,8 @@
   "main": "index.js",
   "type":"module",
   "scripts": {
-    "start": "nodemon nodeapp.js"
+    "start": "nodemon nodeapp.js",
+    "test": "echo \"No tests to run\""
   },
   "keywords": [],
   "author": "",

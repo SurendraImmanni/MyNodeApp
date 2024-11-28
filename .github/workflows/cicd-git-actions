@@ -3,7 +3,7 @@ name: CI/CD Pipeline for webapplication
 on:
   push:
     branches:
-      - "master"
+      - master
 
 jobs:
   build:
@@ -12,6 +12,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Unit Tests
+      run: | 
+        npm test
+        echo "Tests run successfully"
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -19,11 +32,6 @@ jobs:
     - name: Build Docker Image
       run: |
          docker build -t mytask:3.0 -f Dockerfile
-
-    - name: Run Unit Tests
-      run: | 
-        npm test
-        echo "Tests run successfully"
 
   deploy:
     runs-on: ami-0614680123427b75e

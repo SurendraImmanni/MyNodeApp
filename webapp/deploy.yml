@@ -8,23 +8,23 @@
   become: yes
 
   tasks:
-    - name: Install Docker package
-      yum:
-        name: docker
-        state: present
+    # - name: Install Docker package
+    #   yum:
+    #     name: docker
+    #     state: present
 
-    - name: Start Docker service
-      service:
-        name: docker
-        state: started
-        enabled: yes
+    # - name: Start Docker service
+    #   service:
+    #     name: docker
+    #     state: started
+    #     enabled: yes
         
-    - name: Create a Docker image
-      docker_image:
-        name: mytask:3.0
-        source: build
-        build:
-          path: .
+    # - name: Create a Docker image
+    #   docker_image:
+    #     name: mytask:3.0
+    #     source: build
+    #     build:
+    #       path: .
     - name: Run the web app container
       docker_container:
         name: container-webapp

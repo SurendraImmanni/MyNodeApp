@@ -21,14 +21,14 @@
         
     - name: Create a Docker image
       docker_image:
-        name: mytask:2.0
+        name: mytask:3.0
         source: build
         build:
           path: .
     - name: Run the web app container
       docker_container:
         name: container-webapp
-        image: mytask:2.0
+        image: mytask:3.0
         state: started
         exposed_ports:
           - "3300"

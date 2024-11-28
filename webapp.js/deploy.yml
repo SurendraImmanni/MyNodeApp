@@ -1,12 +1,24 @@
 ---
 - name: Deploy Web Application
-  hosts: 13.234.124.175
+  hosts: localhost
+  connection: local
+
+- name: Install Docker on Amazon Linux
+  hosts: localhost
+  become: yes
+
   tasks:
-    - name: Install Docker if not installed
-      become: true
+    - name: Install Docker package
       yum:
-        name: docker.io
+        name: docker
         state: present
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+        
     - name: Create a Docker image
       docker_image:
         name: mytask:2.0

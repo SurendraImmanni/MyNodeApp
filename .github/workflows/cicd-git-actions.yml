@@ -19,10 +19,13 @@ jobs:
         node-version: '22'
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd MyNodeApp/webapp.js  
+        npm install
 
     - name: Run Unit Tests
       run: | 
+        cd MyNodeApp/webapp.js
         npm test
         echo "Tests run successfully"
 
@@ -31,7 +34,8 @@ jobs:
 
     - name: Build Docker Image
       run: |
-         docker build -t mytask:3.0 -f Dockerfile
+        cd MyNodeApp/webapp.js
+        docker build -t mytask:3.0 -f Dockerfile .
 
   deploy:
     runs-on: self-hosted

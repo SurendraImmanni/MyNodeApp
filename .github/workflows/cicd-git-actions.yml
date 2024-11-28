@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - dev
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ami-0614680123427b75e

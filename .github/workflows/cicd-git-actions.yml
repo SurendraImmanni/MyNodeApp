@@ -18,6 +18,11 @@ jobs:
       with:
         node-version: '22'
 
+    - name: Debug Current Directory
+      run: |
+        pwd
+        ls -al
+
     - name: Install dependencies
       run: |
         cd MyNodeApp/MyNodeApp/webapp  
